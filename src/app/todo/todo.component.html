@@ -1,0 +1,41 @@
+<div class="container m-auto w-75">
+  <h1 class="text-center">Lista de Todos</h1>
+    <div class="row">
+      <div class="col-md">
+        <div class="todo">
+          <form [formGroup]="todoForm" (submit)="clickAddTodo()">
+            <div class="row">
+              <div class="col-md">
+              <input
+              formControlName="title" #title
+              type="text"
+              class="form-control add-todo"
+              required
+              placeholder="Título..."
+              />
+            </div>
+            <div class="col-md">
+              <button
+                class="btn btn-success"
+                type="submit"
+              >Agregar Todo
+              </button>
+            </div>
+          </div>
+          </form> 
+          <br/>
+          <div class="right" *ngIf="todoData">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let row of todoData">
+                  <button class="btn btn-danger" (click)="deleteTodo(row)">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                  {{row.title}}
+                  <div class="label-warning badge badge-info btn btn-large">{{row.status}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
